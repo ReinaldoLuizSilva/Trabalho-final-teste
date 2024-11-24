@@ -263,7 +263,7 @@ def test_criar_recruitment():
 
         WebDriverWait(driver, 2).until(EC.presence_of_element_located((By.NAME, "firstName"))).send_keys("Francisco")
         WebDriverWait(driver, 2).until(EC.presence_of_element_located((By.NAME, "lastName"))).send_keys("Beleza")
-        WebDriverWait(driver, 2).until(EC.presence_of_element_located((By.XPATH, "//input[@data-v-1f99f73c=''"))).send_keys("FranciscoBeleza@email.com")
+        WebDriverWait(driver, 2).until(EC.presence_of_element_located((By.XPATH, "//input[@placeholder='Type here']"))).send_keys("FranciscoBeleza@email.com")
 
         WebDriverWait(driver, 2).until(EC.element_to_be_clickable((By.XPATH, "//button[text()=' Save ']"))).click()
 
