@@ -1,34 +1,38 @@
-name: Python Selenium Tests with Firefox
+name: Selenium Tests
 
 on:
   push:
-    branches: [ main ]
+    branches:
+      - main
   pull_request:
-    branches: [ main ]
+    branches:
+      - main
 
 jobs:
   test:
     runs-on: ubuntu-latest
-
+    
+    services:
+      xvfb:
+        image: selenium/standalone-firefox:latest
+        options: --shm-size=2g
+    
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-    - name: Set up Python
-      uses: actions/setup-python@v3
-      with:
-        python-version: '3.8'
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.8'
 
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install -r requirements.txt
-        pip install pytest  # Instala pytest diretamente, como garantia
-        pip list  # Verifica as dependências instaladas
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install selenium pytest
 
-    - name: Run Selenium tests on Firefox
-      run: |
-        Xvfb :99 &  # Inicia um display virtual para execução headless
-        export DISPLAY=:99
-        which pytest  # Verifica o caminho do pytest para garantir a instalação
-        pytest tests/
+      - name: Run Selenium tests
+        env:
+          DISPLAY: :99.0 
+        run: |
+          pytest test_login.py
