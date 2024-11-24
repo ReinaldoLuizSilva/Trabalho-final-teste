@@ -219,3 +219,26 @@ def test_detalhes_recrutamento():
 
     finally:
         driver.quit()
+
+def test_busca_nav():
+    selenium_url = os.getenv("SELENIUM_REMOTE_URL", "http://localhost:4444/wd/hub")
+    driver = webdriver.Remote(
+        command_executor=selenium_url,
+        options=webdriver.FirefoxOptions()
+    )
+
+    try:
+        driver.get("https://opensource-demo.orangehrmlive.com/")
+
+
+        WebDriverWait(driver, 2).until(EC.presence_of_element_located((By.NAME, "username"))).send_keys("Admin")
+        WebDriverWait(driver, 2).until(EC.presence_of_element_located((By.NAME, "password"))).send_keys("admin123")
+        WebDriverWait(driver, 2).until(EC.element_to_be_clickable((By.CLASS_NAME, "orangehrm-login-button"))).click()
+    
+        WebDriverWait(driver, 2).until(EC.element_to_be_clickable((By.XPATH, "//input[contains(@class, 'oxd-input oxd-input--active') and text()='Search'"))).send_keys("My Info")
+        WebDriverWait(driver, 2).until(EC.element_to_be_clickable((By.XPATH, "//span[contains(@class, 'oxd-text oxd-text--span oxd-main-menu-item--name') and text()='My Info']"))).click()
+
+        WebDriverWait(driver, 2).until(EC.visibility_of_element_located((By.XPATH, "//h6[contains(@class, 'oxd-text oxd-text--h6 orangehrm-main-title')]")))
+
+    finally:
+        driver.quit()
