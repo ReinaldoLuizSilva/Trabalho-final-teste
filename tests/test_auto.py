@@ -41,8 +41,8 @@ def test_add_employee():
         WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.CLASS_NAME, "orangehrm-login-button"))).click()
 
         # Navegar para PIM e clicar em "Add"
-        WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, "//span[contains(text(), 'PIM')]"))).click()
-        WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, "//span[contains(text(), ' Add ')]"))).click()
+        WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, "//span[contains(@class, 'oxd-main-menu-item--name') and text()='PIM']"))).click()
+        WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, "//span[contains(text(), 'Add')]"))).click()
     
         # Preencher o formulário de adição de funcionário
         WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.NAME, "firstName"))).send_keys("Francisco")
