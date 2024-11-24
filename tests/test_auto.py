@@ -151,31 +151,23 @@ def test_paginacao():
     finally:
         driver.quit()
 
-def test_criar_usuario():
+def test_deletar_funcionario():
     selenium_url = os.getenv("SELENIUM_REMOTE_URL", "http://localhost:4444/wd/hub")
     driver = webdriver.Remote(
         command_executor=selenium_url,
         options=webdriver.FirefoxOptions()
     )
-    
+
     try:
         driver.get("https://opensource-demo.orangehrmlive.com/")
+
 
         WebDriverWait(driver, 2).until(EC.presence_of_element_located((By.NAME, "username"))).send_keys("Admin")
         WebDriverWait(driver, 2).until(EC.presence_of_element_located((By.NAME, "password"))).send_keys("admin123")
         WebDriverWait(driver, 2).until(EC.element_to_be_clickable((By.CLASS_NAME, "orangehrm-login-button"))).click()
-    
-        WebDriverWait(driver, 2).until(EC.element_to_be_clickable((By.XPATH, "//span[contains(@class, 'oxd-main-menu-item--name') and text()='Admin']"))).click()
-        WebDriverWait(driver, 2).until(EC.element_to_be_clickable((By.XPATH, "//i[contains(@class, 'oxd-icon bi-plus oxd-button-icon')]"))).click()
 
-        WebDriverWait(driver, 2).until(EC.element_to_be_clickable((By.XPATH, "//i[contains(@class, 'oxd-icon bi-caret-down-fill oxd-select-text--arrow')]"))).click()
-        WebDriverWait(driver, 2).until(EC.element_to_be_clickable((By.XPATH, "//div[contains(@class, 'oxd-select-text-input') and text()='ESS']"))).click()
-        WebDriverWait(driver, 2).until(EC.element_to_be_clickable((By.XPATH, "//i[contains(@class, 'oxd-icon bi-caret-down-fill oxd-select-text--arrow')]"))).click()
-        WebDriverWait(driver, 2).until(EC.element_to_be_clickable((By.XPATH, "//div[contains(@class, 'oxd-select-text-input') and text()='Enabled']"))).click()
-        WebDriverWait(driver, 2).until(EC.element_to_be_clickable((By.XPATH, "//input[contains(@placeholder, 'Type for hints...')]"))).send_keys("Peter Mac Anderson")
-        WebDriverWait(driver, 2).until(EC.element_to_be_clickable((By.XPATH, "//input[contains(@class, 'oxd-input oxd-input--active')]"))).send_keys("joao")
-        WebDriverWait(driver, 2).until(EC.element_to_be_clickable((By.XPATH, "(//input[@type='password' and contains(@class, 'oxd-input--active')])[1]"))).send_keys("Senha123")
-        WebDriverWait(driver, 2).until(EC.element_to_be_clickable((By.XPATH, "(//input[@type='password' and contains(@class, 'oxd-input--active')])[1]"))).send_keys("Senha123")
-        WebDriverWait(driver, 2).until(EC.element_to_be_clickable((By.XPATH, "//button[text()=' Save ']"))).click()
+        WebDriverWait(driver, 2).until(EC.element_to_be_clickable((By.XPATH, "//span[contains(@class, 'oxd-main-menu-item--name') and text()='PIM']"))).click()
+        WebDriverWait(driver, 2).until(EC.element_to_be_clickable((By.XPATH, "//i[contains(@class, 'oxd-icon bi-trash')]"))).click()
+        WebDriverWait(driver, 2).until(EC.element_to_be_clickable((By.XPATH, "//button[text()=' Yes, Delete ']"))).click()
     finally:
         driver.quit()
