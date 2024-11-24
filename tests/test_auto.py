@@ -190,7 +190,7 @@ def test_busca_funcionario():
         WebDriverWait(driver, 2).until(EC.element_to_be_clickable((By.XPATH, "//span[contains(@class, 'oxd-main-menu-item--name') and text()='PIM']"))).click()
         WebDriverWait(driver, 2).until(EC.element_to_be_clickable((By.XPATH, "//input[@data-v-1f99f73c='']"))).send_keys("0007")
 
-        WebDriverWait(driver, 2).until(EC.visibility_of_element_located((By.XPATH, "//span[@data-v-7b563373='')and text()='(1) Record Found']")))
+        WebDriverWait(driver, 2).until(EC.visibility_of_element_located((By.XPATH, "//span[contains(text(), ' (1) Records Found')]")))
     
     finally:
         driver.quit()
