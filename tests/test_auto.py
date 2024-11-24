@@ -1,34 +1,30 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-import os
+import time
 
 def test_login_success():
-    # Conecta ao Selenium Remote WebDriver
-    selenium_url = os.getenv("SELENIUM_REMOTE_URL", "http://localhost:4444/wd/hub")
-    driver = webdriver.Remote(
-        command_executor=selenium_url,
-        options=webdriver.FirefoxOptions()
-    )
+    driver = webdriver.Firefox()
+    driver.get("https://opensource-demo.orangehrmlive.com/")
 
-    try:
-        # Acessa o site
-        driver.get("https://opensource-demo.orangehrmlive.com/")
+    time.sleep(2)
 
-        # Espera até que o campo de usuário esteja presente e interage com ele
-        WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.NAME, "username"))).send_keys("Admin")
+    # Localizar o campo de usuário e senha e o botão de login usando a classe dos elementos
+    driver.find_element(By.NAME, "username").send_keys("Admin")
 
-        # Interage com o campo de senha
-        WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.NAME, "password"))).send_keys("admin123")
+    time.sleep(2)
 
-        # Clica no botão de login
-        WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.CLASS_NAME, "orangehrm-login-button"))).click()
+    driver.find_element(By.NAME, "password").send_keys("admin123")
 
-        # Confirma se o redirecionamento para o dashboard foi feito
-        WebDriverWait(driver, 10).until(EC.url_contains("dashboard"))
-        assert "dashboard" in driver.current_url
+    time.sleep(2)
 
-    finally:
-        driver.quit()
+    driver.find_element(By.CLASS_NAME, "orangehrm-login-button").click()
+
+    # Aguardar o carregamento da página após o login
+    time.sleep(2)
+
+    # Verificar se o login foi bem-sucedido
+    assert "dashboard" in driver.current_url.lower()
+    
+    driver.quit()
+test_login_success()
