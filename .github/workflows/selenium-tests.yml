@@ -23,9 +23,12 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
+        pip install pytest  # Instala pytest diretamente, como garantia
+        pip list  # Verifica as dependências instaladas
 
     - name: Run Selenium tests on Firefox
       run: |
         Xvfb :99 &  # Inicia um display virtual para execução headless
         export DISPLAY=:99
+        which pytest  # Verifica o caminho do pytest para garantir a instalação
         pytest tests/
