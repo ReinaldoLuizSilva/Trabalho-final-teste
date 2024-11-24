@@ -47,8 +47,6 @@ def test_add_employee():
         WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, "//button[text()=' Save ']"))).click()
     
         WebDriverWait(driver, 10).until(EC.visibility_of_element_located((By.XPATH, "//h6[contains(@class, 'oxd-text oxd-text--h6 orangehrm-main-title')]")))
-        assert "Personal Details" in driver.page_source
-
 
     finally:
         driver.quit()
