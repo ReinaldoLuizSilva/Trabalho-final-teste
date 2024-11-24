@@ -9,7 +9,6 @@ def test_login_success():
 
     time.sleep(2)
 
-    # Localizar o campo de usuário e senha e o botão de login usando a classe dos elementos
     driver.find_element(By.NAME, "username").send_keys("Admin")
 
     time.sleep(2)
@@ -20,11 +19,9 @@ def test_login_success():
 
     driver.find_element(By.CLASS_NAME, "orangehrm-login-button").click()
 
-    # Aguardar o carregamento da página após o login
     time.sleep(2)
 
-    # Verificar se o login foi bem-sucedido
-    assert "dashboard" in driver.current_url.lower()
+    assert "dashboard" in driver.current_url
     
     driver.quit()
 test_login_success()
