@@ -27,3 +27,4 @@ def test_login_success():
     assert "dashboard" in driver.current_url.lower()
     
     driver.quit()
+test_login_success()
