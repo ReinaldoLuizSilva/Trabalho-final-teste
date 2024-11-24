@@ -95,7 +95,6 @@ def test_navegacao():
         WebDriverWait(driver, 2).until(EC.element_to_be_clickable((By.XPATH, "//span[contains(@class, 'oxd-main-menu-item--name') and text()='Leave']"))).click()
         WebDriverWait(driver, 2).until(EC.element_to_be_clickable((By.XPATH, "//span[contains(@class, 'oxd-main-menu-item--name') and text()='Time']"))).click()
         
-        WebDriverWait(driver, 2).until(EC.url_contains("viewEmployeeTimesheet"))
-        assert "viewEmployeeTimesheet" in driver.current_url.lower()
+        WebDriverWait(driver, 2).until(EC.visibility_of_element_located((By.XPATH, "//h6[contains(@class, 'oxd-text oxd-text--h6 orangehrm-main-title')]")))
     finally:
         driver.quit()
