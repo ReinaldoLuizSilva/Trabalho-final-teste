@@ -188,7 +188,7 @@ def test_busca_funcionario():
         WebDriverWait(driver, 2).until(EC.element_to_be_clickable((By.CLASS_NAME, "orangehrm-login-button"))).click()
 
         WebDriverWait(driver, 2).until(EC.element_to_be_clickable((By.XPATH, "//span[contains(@class, 'oxd-main-menu-item--name') and text()='PIM']"))).click()
-        WebDriverWait(driver, 2).until(EC.element_to_be_clickable((By.XPATH, "//div[contains(@class, 'oxd-autocomplete-text-input oxd-autocomplete-text-input--active')]"))).send_keys("Peter Mac")
+        WebDriverWait(driver, 2).until(EC.element_to_be_clickable((By.XPATH, "//input[@data-v-1f99f73c='']"))).send_keys("0007")
 
         WebDriverWait(driver, 2).until(EC.visibility_of_element_located((By.XPATH, "//span[contains(@class, 'oxd-text oxd-text--span')and text()='(1) Record Found']")))
     
