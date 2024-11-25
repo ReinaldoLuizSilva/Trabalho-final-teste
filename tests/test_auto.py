@@ -341,8 +341,8 @@ def test_deletar_job():
         WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, "//span[contains(@class, 'oxd-topbar-body-nav-tab-item') and text()='Job ']"))).click()
         WebDriverWait(driver, 2).until(EC.element_to_be_clickable((By.XPATH, "//a[contains(@class, 'oxd-topbar-body-nav-tab-link')and text()='Job Titles']"))).click()
 
-        WebDriverWait(driver, 2).until(EC.element_to_be_clickable((By.XPATH, "//div[@data-v-f5c763eb]//i[contains(@class, 'oxd-icon bi-trash')]"))).click()
-        WebDriverWait(driver, 2).until(EC.element_to_be_clickable(((By.XPATH, "//button[contains(@class, 'oxd-button--label-danger') and contains(text(), ' Yes, Delete ')]")))).click()
+        WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, "//button[contains(@class, 'oxd-icon-button oxd-table-cell-action-space')]/i[contains(@class, 'bi-trash')]"))).click()
+        WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, "//button[contains(@class, 'oxd-button--label-danger') and contains(text(), ' Yes, Delete ')]"))).click()
 
         WebDriverWait(driver, 2).until(EC.visibility_of_element_located((By.XPATH, "//h6[contains(@class, 'oxd-text oxd-text--h6 orangehrm-main-title')]")))
 
@@ -370,7 +370,7 @@ def test_trackers():
 
         WebDriverWait(driver, 2).until(EC.element_to_be_clickable((By.XPATH, "//button[contains(@class, 'oxd-button oxd-button--medium oxd-button--secondary') and text()=' Add Log ']"))).click()
         WebDriverWait(driver, 2).until(EC.presence_of_element_located((By.XPATH, "//input[@placeholder='Type here']"))).send_keys("teste novo")
-        WebDriverWait(driver, 2).until(EC.presence_of_element_located((By.XPATH, "//textarea[@class, 'oxd-textarea oxd-textarea--active oxd-textarea--resize-vertical']"))).send_keys("teste teste novo")
+        WebDriverWait(driver, 2).until(EC.presence_of_element_located((By.XPATH, "//textarea[contains(@class, 'oxd-textarea oxd-textarea--active oxd-textarea--resize-vertical')]"))).send_keys("teste teste novo")
         WebDriverWait(driver, 2).until(EC.element_to_be_clickable((By.XPATH, "//button[text()=' Save ']"))).click()
 
     finally:
