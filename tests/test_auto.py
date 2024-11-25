@@ -342,7 +342,7 @@ def test_deletar_job():
         WebDriverWait(driver, 2).until(EC.element_to_be_clickable((By.XPATH, "//a[contains(@class, 'oxd-topbar-body-nav-tab-link')and text()='Job Titles']"))).click()
 
         WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, "//button[contains(@class, 'oxd-icon-button oxd-table-cell-action-space')]/i[contains(@class, 'bi-trash')]"))).click()
-        WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, "//button[contains(@class, 'oxd-button--label-danger') and contains(text(), ' Yes, Delete ')]"))).click()
+        WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, "//button[contains(@class, 'oxd-button--label-danger') and contains(text(), 'Yes, Delete')]"))).click()
 
         WebDriverWait(driver, 2).until(EC.visibility_of_element_located((By.XPATH, "//h6[contains(@class, 'oxd-text oxd-text--h6 orangehrm-main-title')]")))
 
