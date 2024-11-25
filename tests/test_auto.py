@@ -3,7 +3,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import os
-
+#1
 def test_login_success():
     selenium_url = os.getenv("SELENIUM_REMOTE_URL", "http://localhost:4444/wd/hub")
     driver = webdriver.Remote(
@@ -24,7 +24,7 @@ def test_login_success():
 
     finally:
         driver.quit()
-
+#2
 def test_add_employee():
     selenium_url = os.getenv("SELENIUM_REMOTE_URL", "http://localhost:4444/wd/hub")
     driver = webdriver.Remote(
@@ -51,7 +51,7 @@ def test_add_employee():
     finally:
         driver.quit()
     
-
+#3
 def test_logout():
     selenium_url = os.getenv("SELENIUM_REMOTE_URL", "http://localhost:4444/wd/hub")
     driver = webdriver.Remote(
@@ -74,7 +74,7 @@ def test_logout():
         assert "login" in driver.current_url.lower()
     finally:
         driver.quit()
-
+#4
 def test_navegacao():
     selenium_url = os.getenv("SELENIUM_REMOTE_URL", "http://localhost:4444/wd/hub")
     driver = webdriver.Remote(
@@ -98,7 +98,7 @@ def test_navegacao():
         WebDriverWait(driver, 2).until(EC.visibility_of_element_located((By.XPATH, "//h6[contains(@class, 'oxd-text oxd-text--h6 orangehrm-main-title')]")))
     finally:
         driver.quit()
-
+#5
 def test_auterar_info():
     selenium_url = os.getenv("SELENIUM_REMOTE_URL", "http://localhost:4444/wd/hub")
     driver = webdriver.Remote(
@@ -124,7 +124,7 @@ def test_auterar_info():
 
     finally:
         driver.quit()
-
+#6
 def test_paginacao():
     selenium_url = os.getenv("SELENIUM_REMOTE_URL", "http://localhost:4444/wd/hub")
     driver = webdriver.Remote(
@@ -150,7 +150,7 @@ def test_paginacao():
 
     finally:
         driver.quit()
-
+#7
 def test_deletar_funcionario():
     selenium_url = os.getenv("SELENIUM_REMOTE_URL", "http://localhost:4444/wd/hub")
     driver = webdriver.Remote(
@@ -171,7 +171,7 @@ def test_deletar_funcionario():
         WebDriverWait(driver, 2).until(EC.element_to_be_clickable((By.XPATH, "//button[text()=' Yes, Delete ']"))).click()
     finally:
         driver.quit()
-
+#8
 def test_busca_funcionario():
     selenium_url = os.getenv("SELENIUM_REMOTE_URL", "http://localhost:4444/wd/hub")
     driver = webdriver.Remote(
@@ -195,7 +195,7 @@ def test_busca_funcionario():
     finally:
         driver.quit()
 
-
+#9
 def test_detalhes_recrutamento():
 
     selenium_url = os.getenv("SELENIUM_REMOTE_URL", "http://localhost:4444/wd/hub")
@@ -219,7 +219,7 @@ def test_detalhes_recrutamento():
 
     finally:
         driver.quit()
-
+#10
 def test_busca_nav():
     selenium_url = os.getenv("SELENIUM_REMOTE_URL", "http://localhost:4444/wd/hub")
     driver = webdriver.Remote(
@@ -242,7 +242,7 @@ def test_busca_nav():
 
     finally:
         driver.quit()
-
+#11
 def test_criar_recruitment():
     selenium_url = os.getenv("SELENIUM_REMOTE_URL", "http://localhost:4444/wd/hub")
     driver = webdriver.Remote(
@@ -271,7 +271,8 @@ def test_criar_recruitment():
     finally:
         driver.quit()
 
-def criar_job():
+#12
+def test_criar_job():
     selenium_url = os.getenv("SELENIUM_REMOTE_URL", "http://localhost:4444/wd/hub")
     driver = webdriver.Remote(
         command_executor=selenium_url,
@@ -299,8 +300,8 @@ def criar_job():
 
     finally:
         driver.quit()
-
-def mais_detalhes_claim():
+#13
+def test_maisdetalhes_claim():
     selenium_url = os.getenv("SELENIUM_REMOTE_URL", "http://localhost:4444/wd/hub")
     driver = webdriver.Remote(
         command_executor=selenium_url,
