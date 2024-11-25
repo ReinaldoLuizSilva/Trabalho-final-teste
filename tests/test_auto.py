@@ -292,7 +292,7 @@ def test_criar_job():
         WebDriverWait(driver, 2).until(EC.element_to_be_clickable((By.XPATH, "//a[contains(@class, 'oxd-topbar-body-nav-tab-link')and text()='Job Titles']"))).click()
         WebDriverWait(driver, 2).until(EC.element_to_be_clickable((By.XPATH, "//button[contains(@class, 'oxd-button--secondary') and text()=' Add ']"))).click()
 
-        WebDriverWait(driver, 2).until(EC.presence_of_element_located((By.XPATH, "//span[contains(@class, 'oxd-input oxd-input--active'"))).send_keys("teste job")
+        WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, "//div[@data-v-957b4417]//input[@class='oxd-input oxd-input--active']"))).send_keys("teste job")
         WebDriverWait(driver, 2).until(EC.element_to_be_clickable((By.XPATH, "//button[text()=' Save ']"))).click()
 
         WebDriverWait(driver, 2).until(EC.url_contains("dviewJobTitleList"))
