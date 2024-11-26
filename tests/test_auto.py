@@ -322,7 +322,7 @@ def test_maisdetalhes_claim():
     finally:
         driver.quit()
 #14
-def test_deletar_job():
+def test_deletar_vacancies():
     selenium_url = os.getenv("SELENIUM_REMOTE_URL", "http://localhost:4444/wd/hub")
     driver = webdriver.Remote(
         command_executor=selenium_url,
@@ -337,14 +337,10 @@ def test_deletar_job():
         WebDriverWait(driver, 2).until(EC.presence_of_element_located((By.NAME, "password"))).send_keys("admin123")
         WebDriverWait(driver, 2).until(EC.element_to_be_clickable((By.CLASS_NAME, "orangehrm-login-button"))).click()
 
-        WebDriverWait(driver, 2).until(EC.element_to_be_clickable((By.XPATH, "//span[contains(@class, 'oxd-main-menu-item--name') and text()='Admin']"))).click()
-        WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, "//span[contains(@class, 'oxd-topbar-body-nav-tab-item') and text()='Job ']"))).click()
-        WebDriverWait(driver, 2).until(EC.element_to_be_clickable((By.XPATH, "//a[contains(@class, 'oxd-topbar-body-nav-tab-link')and text()='Job Titles']"))).click()
-
-        WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, "//button[contains(@class, 'oxd-icon-button oxd-table-cell-action-space')]/i[contains(@class, 'bi-trash')]"))).click()
-        WebDriverWait(driver, 2).until(EC.element_to_be_clickable((By.XPATH, "//i[contains(@class, 'oxd-icon bi-trash oxd-button-icon')]"))).click()
-
-        WebDriverWait(driver, 2).until(EC.visibility_of_element_located((By.XPATH, "//h6[contains(@class, 'oxd-text oxd-text--h6 orangehrm-main-title')]")))
+        WebDriverWait(driver, 2).until(EC.element_to_be_clickable((By.XPATH, "//span[contains(@class, 'oxd-main-menu-item--name') and text()='Recruitment']"))).click()
+        WebDriverWait(driver, 2).until(EC.element_to_be_clickable((By.XPATH, "//a[contains(@class, 'oxd-topbar-body-nav-tab-item') and text()='Vacancies']"))).click()
+        WebDriverWait(driver, 2).until(EC.element_to_be_clickable((By.XPATH, "//i[contains(@class, 'oxd-icon bi-trash')]"))).click()
+        WebDriverWait(driver, 2).until(EC.element_to_be_clickable((By.XPATH, "//button[contains(@class, 'oxd-button oxd-button--medium oxd-button--label-danger orangehrm-button-margin')]"))).click()
 
     finally:
         driver.quit()
