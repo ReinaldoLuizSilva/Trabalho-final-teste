@@ -352,6 +352,7 @@ def test_trackers():
     )
 
     try:
+        
         driver.get("https://opensource-demo.orangehrmlive.com/")
 
 
