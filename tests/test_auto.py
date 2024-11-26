@@ -340,8 +340,7 @@ def test_deletar_vacancies():
         WebDriverWait(driver, 2).until(EC.element_to_be_clickable((By.XPATH, "//span[contains(@class, 'oxd-main-menu-item--name') and text()='Recruitment']"))).click()
         WebDriverWait(driver, 2).until(EC.element_to_be_clickable((By.XPATH, "//a[contains(@class, 'oxd-topbar-body-nav-tab-item') and text()='Vacancies']"))).click()
         WebDriverWait(driver, 2).until(EC.element_to_be_clickable((By.XPATH, "//i[contains(@class, 'oxd-icon bi-trash')]"))).click()
-        WebDriverWait(driver, 2).until(EC.element_to_be_clickable((By.XPATH, "//button[contains(@class, 'oxd-button oxd-button--medium oxd-button--label-danger orangehrm-button-margin')]"))).click()
-
+        WebDriverWait(driver, 2).until(EC.element_to_be_clickable((By.XPATH, "//button[text()=' Yes, Delete ']"))).click()
     finally:
         driver.quit()
 #15
